@@ -1,18 +1,24 @@
 import React from "react";
+import add from "../assets/add.png"
 
 function Button ({ label, onClick }) {
   return (
     <button 
     onClick={onClick}
     style={{
-      backgroundColor: "#434275",
+      backgroundColor: "#fff",
       boxShadow: "0px 2px 4px rgba(109, 108, 147, 0.4)",
-      borderRadius: "8px",
       width: "100px",
-      height: "25px",
-      color: "#fff"
-    }}>
-      Clicar
+      height: "30px",
+      color: "#000",
+      display: "flex",
+      gap: "5px",
+      paddingTop: "6px"
+      
+      
+  }}>
+      <img src={add} alt="add car"  style={{width:"10px"}}/>
+      Novo Carro
       {label}
     </button>
   )

@@ -6,7 +6,7 @@ function MenuItem ({ children }) {
       style={{
         background: "#5d6275",
         width: "50px",
-        height: "25px",
+        height: "15px",
         color: "#fff",
         textAlign: "center",
         padding: "5px",

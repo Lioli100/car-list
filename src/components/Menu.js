@@ -7,7 +7,7 @@ function Menu ({ children }) {
       style={{
         backgroundColor: "#f0f2f5",
         width: "min(90vw, 1280px)",
-        height: "100px",
+        height: "50px",
       }}
     >
       {children}
