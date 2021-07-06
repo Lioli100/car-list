@@ -1,19 +1,15 @@
 {
-  "posts": [
+  "marca": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "marca": "Chevrolet"
     }
   ],
-  "comments": [
+  "modelo": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "nome": "Cruze",
+      "marcaId": 1
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
