@@ -1,6 +1,6 @@
 import React from "react";
 
-function MenuItem ({ children }) {
+function MenuItem({ children }) {
   return (
     <h5
       style={{
@@ -15,6 +15,6 @@ function MenuItem ({ children }) {
       {children}
     </h5>
   );
-};
+}
 
 export default MenuItem;

@@ -4,10 +4,12 @@ import Button from "./components/Button";
 import TextInput from "./components/TextInput";
 import Text from "./components/Text";
 import Select from "./components/Select";
+import Routes from "./routes";
 
 function App() {
   return (
     <div className="App">
+      <Routes />
       <Menu />
       <MenuItem>Carro</MenuItem>
     
@@ -18,7 +20,7 @@ function App() {
       <Select />
       <br />
       <br />
-      <Button onClick={() => alert("Você clicou no botão!")}>Clicar</Button>
+      <Button onClick={() => alert("Você clicou no botão!")}>teste</Button>     
     </div>
   );
 }

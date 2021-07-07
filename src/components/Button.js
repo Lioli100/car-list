@@ -1,7 +1,8 @@
 import React from "react";
 import add from "../assets/add.png"
 
-function Button ({ label, onClick }) {
+ function Button ({children, onClick}) {
+  
   return (
     <button 
     onClick={onClick}
@@ -13,13 +14,11 @@ function Button ({ label, onClick }) {
       color: "#000",
       display: "flex",
       gap: "5px",
-      paddingTop: "6px"
-      
+      paddingTop: "6px"   
       
   }}>
       <img src={add} alt="add car"  style={{width:"10px"}}/>
-      Novo Carro
-      {label}
+       {children}
     </button>
   )
 };
