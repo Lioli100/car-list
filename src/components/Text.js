@@ -11,8 +11,8 @@ function Text ({ children }) {
         lineHeight: "17px",
       }}
     >
-      {children}
-    </h1>
+      {children  }
+        </h1>
   );
 };
 

@@ -19,6 +19,8 @@ function TextInput({ id, value, onChange, placeholder, type, disabled }) {
           boxSizing: "border-box",
           borderRadius: "20px",
         }}
+
+
       />
     </div>
   );
@@ -26,7 +28,7 @@ function TextInput({ id, value, onChange, placeholder, type, disabled }) {
 
 export default TextInput;
 
-Input.propTypes = {
+TextInput.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -45,7 +47,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
 };
 
-Input.defaultProps = {
+TextInput.defaultProps = {
   id: undefined,
   placeholder: undefined,
   type: "text",
