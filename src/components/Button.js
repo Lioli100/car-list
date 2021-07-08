@@ -1,27 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import add from "../assets/add.png"
 
- function Button ({children, onClick}) {
-  
+ function Button ({ children, onClick, disabled, pending }) {
   return (
     <button 
     onClick={onClick}
-    style={{
-      backgroundColor: "#fff",
-      boxShadow: "0px 2px 4px rgba(109, 108, 147, 0.4)",
-      width: "100px",
-      height: "30px",
-      color: "#000",
-      display: "flex",
-      gap: "5px",
-      paddingTop: "6px"   
-      
-  }}>
+    disabled={disabled || pending}>
       <img src={add} alt="add car"  style={{width:"10px"}}/>
-       {children}
+       {pending ? "Loading...": children}
     </button>
   )
 };
 
 export default Button;
 
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  pending: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  disabled: false,
+  pending: false,
+};
