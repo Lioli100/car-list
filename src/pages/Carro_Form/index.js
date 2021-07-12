@@ -5,10 +5,12 @@ function Carro_Form() {
   return (
     <div>
       Cadastro de Carros
-    <Link className="btn-inicio-lista-prod" to="/">
-    {" "} Voltar {" "}
-  </Link>
-  </div>
-  )
+      <Link className="btn-inicio-lista-prod" to="/">
+        {" "}
+        Voltar{" "}
+      </Link>
+    </div>
+  );
 }
+
 export default Carro_Form;

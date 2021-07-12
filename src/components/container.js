@@ -1,10 +1,10 @@
-function Container ({ children }) {
+function Container({ children }) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "100vh",
+        height: "120vh",
         justifyContent: "center",
         alignItems: "center",
       }}
@@ -12,6 +12,6 @@ function Container ({ children }) {
       {children}
     </div>
   );
-};
+}
 
 export default Container;

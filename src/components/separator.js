@@ -9,23 +9,25 @@ function getSize(size) {
     lg: 32,
     xl: 64,
   }[size];
-};
+}
 
 function Separator({ size }) {
   return (
-  <div style={{
-    width: getSize(size), 
-    height: getSize(size) }} 
+    <div
+      style={{
+        width: getSize(size),
+        height: getSize(size),
+      }}
     />
-    )
-  };
+  );
+}
 
-  export default Separator;
-  
-  Separator.propTypes = {
-    size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
-  };
+export default Separator;
 
-  Separator.defaultProps = {
-    size: "md",
-  }
+Separator.propTypes = {
+  size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+};
+
+Separator.defaultProps = {
+  size: "md",
+};

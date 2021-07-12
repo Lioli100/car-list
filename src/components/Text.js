@@ -1,19 +1,18 @@
 import React from "react";
 
-function Text ({ children }) {
+function Text({ children }) {
   return (
-    <h1
+    <span
       style={{
         color: "#4D656F",
         fontFamily: "inter",
         fontStyle: "normal",
-        fontSize: "14px",
         lineHeight: "17px",
       }}
     >
-      {children  }
-        </h1>
+      {children}
+    </span>
   );
-};
+}
 
 export default Text;

@@ -5,7 +5,6 @@ function TextInput({ id, value, onChange, placeholder, type, disabled }) {
   return (
     <div>
       <input
-
         id={id}
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -19,8 +18,6 @@ function TextInput({ id, value, onChange, placeholder, type, disabled }) {
           boxSizing: "border-box",
           borderRadius: "20px",
         }}
-
-
       />
     </div>
   );
@@ -41,7 +38,7 @@ TextInput.propTypes = {
     "search",
     "date",
     "time",
-    "datetime-local",
+    "dateTime-local",
     "black",
   ]),
   disabled: PropTypes.bool,

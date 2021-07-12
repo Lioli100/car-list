@@ -1,20 +1,15 @@
 import React from "react";
 
-function Select ({ children }) {
+function Select({ value, onChange, options }) {
   return (
-    <select
-      style={{
-        color: "#4D656F",
-        fontFamily: "inter",
-        fontStyle: "normal",
-        fontSize: "14px",
-        lineHeight: "17px",
-        width: "100px"
-      }}
-    >
-      {children}
+    <select onChange={(event) => onChange?.(event.target.value)}>
+      {options.map((option) => (
+        <option selected={option.value === value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
     </select>
   );
-};
+}
 
 export default Select;
