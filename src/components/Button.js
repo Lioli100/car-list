@@ -30,7 +30,18 @@ const disabledStyles = {
 };
 
 const stylesMap = {
-  solid: {},
+  solid: {
+    danger: {
+      background: "red",
+      border: "1px solid blue",
+      color: "blue",
+    },
+    success: {
+      background: "green",
+      border: "1px solid blue",
+      color: "blue",
+    },
+  },
   outline: {
     primary: {
       background: "none",

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Marca_Form() {
-  return <div>Listagem de Marcas</div>;
+  return <div>Cadastro de Marcas</div>;
 }
 
 export default Marca_Form;

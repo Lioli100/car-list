@@ -10,7 +10,6 @@ const Routes = () => (
     <div className="Inicio"></div>
     <Switch>
       <Route exact path="/" component={Carro_List} />
-      {/* <Route exact path="/" component={Carro_List} /> */}
       <Route path="/Carro_Form" component={Carro_Form} />
       <Route path="/Marca_Form" component={Marca_Form} />
       <Route path="/Marca_List" component={Marca_List} />

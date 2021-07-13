@@ -11,10 +11,21 @@ import Modal from "./components/modal";
 import TextArea from "./components/text-area";
 import Toast from "./components/toast";
 import Table from "./components/table";
-import DeleteConfirmationModal from "./components/delete-confirmation-modal";
+import ToastProvider from "./components/toast01";
+import { useToast } from "./components/toast01";
 import Routes from "./routes";
 
 function App() {
+  return (
+    <ToastProvider timeout={10000}>
+      <Home />
+    </ToastProvider>
+  );
+}
+
+export default App;
+
+const Home = () => {
   const [name, setName] = React.useState("");
   const [visible, setVisible] = React.useState(false);
   const [selectedBrand, setSelectedBrand] = React.useState(2);
@@ -28,6 +39,8 @@ function App() {
   ]);
   const [deletingPerson, setDeletingPerson] = React.useState();
 
+  const { notify } = useToast();
+
   //TODO: Get db.json brands
   const brands = [
     { id: 1, name: "Citroen" },
@@ -39,14 +52,23 @@ function App() {
     label: brand.name,
   }));
 
+  const handleDeletePerson = () => {
+    setPeople((currentState) =>
+      currentState.filter((person) => person.id !== deletingPerson.id)
+    );
+    setDeletingPerson(null);
+    notify({ intent: "success", message: "Usuário removido com sucesso!" });
+  };
+
   return (
     <Container>
       <Menu>Carro Marca</Menu>
-      <Separator />
       <Routes />
-      <MenuItem>Carro</MenuItem>
-      <Text>Filtrar por placa</Text>
+      <Button intent="success" disabled onClick={() => {}}>
+        Teste propriedade
+      </Button>
       <Separator />
+      <Text>Filtrar por placa</Text>
       <TextInput
         id="name"
         value={name}
@@ -55,7 +77,7 @@ function App() {
         type="text"
       />
       <Separator />
-      <Text>Filtrar por marca</Text>
+      <Text>Escolher a marca</Text>
       <Separator />
       <Select
         value={selectedBrand}
@@ -63,7 +85,8 @@ function App() {
         onChange={setSelectedBrand}
       />
       <Separator />
-      <Button onClick={() => alert("Você clicou no botão!")}>Button</Button>
+      <MenuItem>Carro</MenuItem>
+      <MenuItem>Marca</MenuItem>
       <Separator />
       <Button
         intent="primary"
@@ -91,12 +114,25 @@ function App() {
         Notificação
       </Toast>
       <Separator />
+      <Button
+        intent="primary"
+        variant="outline"
+        onClick={() => {
+          setVisible(true);
+        }}
+      >
+        Open Modal
+      </Button>
       <Modal
         visible={Boolean(deletingPerson)}
         onRequestClose={() => setDeletingPerson(null)}
       >
         Tem certeza que deseja excluir o jovem {deletingPerson?.name}??
         <div>
+          <Button onClick={handleDeletePerson}>Sim</Button>
+          <Button onClick={() => setDeletingPerson(null)}>Não, Obrigado</Button>
+        </div>
+        {/* <div>
           <Button
             onClick={() => {
               setPeople((currentState) =>
@@ -110,7 +146,7 @@ function App() {
           <Button onClick={() => setDeletingPerson(null)}>
             Não, obrigado.
           </Button>
-        </div>
+        </div> */}
       </Modal>
       <Separator />
       <Table
@@ -123,8 +159,11 @@ function App() {
             render: ({ rowData, index }) => {
               return (
                 <div>
-                  <Button>Editar</Button>
-                  <Button onClick={() => setDeletingPerson(rowData)}>
+                  <Button intent="success">Editar</Button>
+                  <Button
+                    intent="danger"
+                    onClick={() => setDeletingPerson(rowData)}
+                  >
                     Excluir
                   </Button>
                 </div>
@@ -134,9 +173,6 @@ function App() {
         ]}
         data={people}
       />
-      <DeleteConfirmationModal />
     </Container>
   );
-}
-
-export default App;
+};

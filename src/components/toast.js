@@ -18,21 +18,21 @@ function Toast({ children, text, intent }) {
       position: toast.POSITION.TOP_CENTER,
       type: intent,
     });
-    //   toast.success("Success notification!", {
-    //     position: toast.POSITION.BOTTOM_RIGHT,
-    //   });
-    //   toast.info("Information notification!", {
-    //     position: toast.POSITION.BOTTOM_RIGHT,
-    //     autoClose: 10000,
-    //   });
-    //   toast.error("Error notification!", {
-    //     position: toast.POSITION.BOTTOM_RIGHT,
-    //     autoClose: false,
-    //   });
-    //   toast.warn(<CustomToast />, {
-    //     position: toast.POSITION.BOTTOM_CENTER,
-    //     autoClose: false,
-    //   });
+    toast.success("Success notification!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+    toast.info("Information notification!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: 10000,
+    });
+    toast.error("Error notification!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: false,
+    });
+    toast.warn(<CustomToast />, {
+      position: toast.POSITION.BOTTOM_CENTER,
+      autoClose: false,
+    });
   };
 
   return <button onClick={notify}>{children}</button>;
