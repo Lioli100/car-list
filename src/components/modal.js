@@ -13,7 +13,7 @@ function Modal({ children, visible, onRequestClose }) {
             left: 0,
             backgroundColor: "rgba(0,0,0,0.2)",
             display: "flex",
-            flexDiection: "column",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}

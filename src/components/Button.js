@@ -1,67 +1,141 @@
 import React from "react";
 import PropTypes from "prop-types";
-import add from "../assets/add.png";
 
-function Button({ children, intent, variant, onClick, disabled, pending }) {
+const getSize = (size) =>
+  ({
+    xs: 24,
+    sm: 30,
+    md: 40,
+    lg: 50,
+    xl: 60,
+  }[size]);
+
+const getIntent = (intent) =>
+  ({
+    primary: "#0d6efd",
+    secondary: "#343a40",
+    danger: "#dc3545",
+    info: "#0dcaf0",
+    success: "#198754",
+  }[intent]);
+
+// const getImg = (img) =>
+//   ({
+//     deleteIco,
+//     deleteIcoWhite,
+//     addIcoWhite,
+//     addIco,
+//     editIco,
+//     editIcoWhite,
+//   }[img]);
+
+const getFontSize = (fontSize) =>
+  ({
+    xs: 14,
+    sm: 16,
+    md: 16,
+    lg: 16,
+    xl: 18,
+  }[fontSize]);
+
+const setButtonRectangleDefault = (size) => {
+  return size * 2;
+};
+
+const getFontWeight = (fontWeight) =>
+  ({
+    normal: 400,
+    bold: 700,
+  }[fontWeight]);
+
+export default function Button({
+  children,
+  variant,
+  size,
+  intent,
+  disabled,
+  pending,
+  onClick,
+  img,
+  color,
+  fontWeight,
+  fontSize,
+}) {
+  const getVariant = {
+    solid: {
+      color: "#fff",
+      backgroundColor: getIntent(intent),
+      border: "none",
+      borderColor: getIntent(intent),
+      borderRadius: "5px",
+    },
+    outline: {
+      color: "black",
+      backgroundColor: "rgba(0, 0, 0, 0.0)",
+      border: "solid",
+      borderColor: getIntent(intent),
+      borderRadius: "5px",
+    },
+    ghost: {
+      color: "black",
+      backgroundColor: "rgba(0,0,0,0.15)",
+      border: "none",
+      borderRadius: "5px",
+    },
+  };
+
+  const styles = {
+    minHeight: getSize(size),
+    minWidth: setButtonRectangleDefault(getSize(size)),
+    margin: "5px",
+    color: color,
+    fontWeight: getFontWeight(fontWeight),
+    fontSize: getFontSize(fontSize),
+    cursor: "pointer",
+  };
   return (
     <button
-      onClick={onClick}
+      style={{ ...styles, ...getVariant[variant] }}
+      variant={variant}
+      size={size}
       disabled={disabled || pending}
-      style={{
-        ...styles,
-        ...stylesMap[variant][intent],
-        ...(disabled ? disabledStyles : {}),
-      }}
+      onClick={onClick}
+      fontWeight={fontWeight}
+      color={color}
+      fontSize={fontSize}
     >
-      <img src={add} alt="add car" style={{ width: "10px" }} />
-      {pending ? "Loading..." : children}
+      {pending ? "loading" : children}
+      {/* <img src={getImg(img)} alt=""></img> */}
     </button>
   );
 }
 
-export default Button;
-
-const styles = {
-  padding: "1em 2em",
-};
-
-const disabledStyles = {
-  opacity: 0.56,
-};
-
-const stylesMap = {
-  solid: {
-    danger: {
-      background: "red",
-      border: "1px solid blue",
-      color: "blue",
-    },
-    success: {
-      background: "green",
-      border: "1px solid blue",
-      color: "blue",
-    },
-  },
-  outline: {
-    primary: {
-      background: "none",
-      border: "1px solid blue",
-      color: "blue",
-    },
-  },
-  ghost: {},
-};
-
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(["solid", "outline", "ghost"]),
+  size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+  intent: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "danger",
+    "success",
+    "info",
+  ]),
   pending: PropTypes.bool,
+  disabled: PropTypes.bool,
+  img: PropTypes.node,
+  color: PropTypes.string,
+  fontWeight: PropTypes.oneOf(["normal", "bold"]),
+  fontSize: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
 };
 
 Button.defaultProps = {
+  variant: "solid",
+  size: "md",
+  intent: "primary",
   disabled: false,
   pending: false,
-  variant: "solid",
-  intent: "primary",
+  color: "black",
+  fontWeight: "normal",
+  fontSize: "md",
 };

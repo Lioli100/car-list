@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function MenuItem({ children }) {
   return (
     <h5
       style={{
-        background: "#5d6275",
+        // background: "#5d6275",
         width: "50px",
         height: "15px",
-        color: "#fff",
+        color: "#000",
         textAlign: "center",
-        padding: "5px",
+        margin: 0,
+        // padding: "5px",
       }}
     >
       {children}

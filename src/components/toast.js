@@ -1,41 +1,60 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React from "react";
+import { createPortal } from "react-dom";
+const ToastContext = React.createContext({
+  notify: () => {},
+});
 
-const CustomToast = ({ closeToast }) => {
+const ToastProvider = ({ children, timeout = 5000 }) => {
+  const [visible, setVisible] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+  const [intent, setIntent] = React.useState("primary");
+
+  const notify = ({ intent, message }) => {
+    setIntent(intent);
+    setMessage(message);
+    setVisible(true);
+    setTimeout(() => {
+      setVisible(false);
+    }, timeout);
+  };
+
   return (
-    <div>
-      Testando o botão de fechar a notificação!
-      <button onClick={closeToast}>Close</button>
-    </div>
+    <ToastContext.Provider value={{ notify }}>
+      {children}
+
+      {createPortal(
+        visible ? (
+          <div
+            style={{
+              zIndex: 999,
+              width: 450,
+              top: 16,
+              left: 0,
+              right: 0,
+              padding: 16,
+              borderRadius: 8,
+              margin: "0 auto",
+              position: "absolute",
+              color: "#fff",
+              transition: "1s ease-in-out",
+              background: {
+                primary: "blue",
+                danger: "red",
+                warning: "orange",
+                success: "green",
+                info: "teal",
+              }[intent],
+            }}
+          >
+            {message}
+          </div>
+        ) : null,
+        document.body
+      )}
+    </ToastContext.Provider>
   );
 };
 
-toast.configure();
+export default ToastProvider;
 
-function Toast({ children, text, intent }) {
-  const notify = () => {
-    toast(text, {
-      position: toast.POSITION.TOP_CENTER,
-      type: intent,
-    });
-    toast.success("Success notification!", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-    toast.info("Information notification!", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 10000,
-    });
-    toast.error("Error notification!", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: false,
-    });
-    toast.warn(<CustomToast />, {
-      position: toast.POSITION.BOTTOM_CENTER,
-      autoClose: false,
-    });
-  };
-
-  return <button onClick={notify}>{children}</button>;
-}
-
-export default Toast;
+export const useToast = () => React.useContext(ToastContext);

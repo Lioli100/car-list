@@ -1,20 +1,40 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Carro_Form from "./pages/Carro_Form";
-import Carro_List from "./pages/Carro_List";
-import Marca_Form from "./pages/Marca_Form";
-import Marca_List from "./pages/Marca_List";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import BrandsScreen from "./screens/brands-screen";
+import CarsScreen from "./screens/cars-screen";
+import BrandFormScreen from "./screens/brand-form-screen";
+import CarFormScreen from "./screens/car-form-screen";
 
-const Routes = () => (
-  <BrowserRouter>
-    <div className="Inicio"></div>
-    <Switch>
-      <Route exact path="/" component={Carro_List} />
-      <Route path="/Carro_Form" component={Carro_Form} />
-      <Route path="/Marca_Form" component={Marca_Form} />
-      <Route path="/Marca_List" component={Marca_List} />
-    </Switch>
-  </BrowserRouter>
-);
+const Routes = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/marcas" />
+        </Route>
+        <Route exact path="/marcas">
+          <BrandsScreen />
+        </Route>
+        <Route exact path="/marcas/nova">
+          <BrandFormScreen />
+        </Route>
+        <Route exact path="/marcas/:id">
+          <BrandFormScreen />
+        </Route>
+        <Route path="/carros">
+          <CarsScreen />
+        </Route>
+        <Route exact path="/carros/novo">
+          <CarFormScreen />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
 
 export default Routes;

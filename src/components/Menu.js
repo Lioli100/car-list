@@ -5,12 +5,11 @@ function Menu({ children }) {
     <div
       style={{
         backgroundColor: "#f0f2f5",
-        width: "min(90vw, 1280px)",
-        height: "50px",
+        width: "min(90vw, 1480px)",
+        height: "30px",
         display: "flex",
-        gap: "15px",
         justifyContent: "space-between",
-        padding: "30px 0 0 30px",
+        padding: "1px 360px 1px 30px",
       }}
     >
       {children}

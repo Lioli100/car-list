@@ -4,10 +4,10 @@ function Text({ children }) {
   return (
     <span
       style={{
-        color: "#4D656F",
-        fontFamily: "inter",
+        color: "#000",
+        fontFamily: "cursive",
         fontStyle: "normal",
-        lineHeight: "17px",
+        lineHeight: "25px",
       }}
     >
       {children}

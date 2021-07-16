@@ -9,16 +9,8 @@
       "id": 5
     },
     {
-      "name": "Ferrari",
+      "name": "Test",
       "id": 6
-    },
-    {
-      "name": "Alfa Romeu",
-      "id": 7
-    },
-    {
-      "name": "Alfarromeu ",
-      "id": 8
     }
   ],
   "cars": []

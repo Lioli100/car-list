@@ -1,12 +1,12 @@
+import React from "react";
+
 function Container({ children }) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "120vh",
-        justifyContent: "center",
-        alignItems: "center",
+        padding: "32px",
       }}
     >
       {children}
