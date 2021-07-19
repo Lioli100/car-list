@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
+  Link,
 } from "react-router-dom";
 import BrandsScreen from "./screens/brands-screen";
 import CarsScreen from "./screens/cars-screen";
@@ -26,10 +27,13 @@ const Routes = () => {
         <Route exact path="/marcas/:id">
           <BrandFormScreen />
         </Route>
-        <Route path="/carros">
+        <Route exact path="/carros">
           <CarsScreen />
         </Route>
         <Route exact path="/carros/novo">
+          <CarFormScreen />
+        </Route>
+        <Route exact path="/carros/:id">
           <CarFormScreen />
         </Route>
       </Switch>

@@ -6,21 +6,23 @@ import Container from "../components/container";
 import Modal from "../components/modal";
 import { Link } from "react-router-dom";
 import DeleteConfirmationModal from "../components/delete-confirmation-modal";
-import getBrandsService from "../services/get-brands-service";
+import useBrands from "../hooks/use-brands";
+// import getBrandsService from "../services/get-brands-service";
 
 const BrandsScreen = () => {
-  const [brands, setBrands] = React.useState([]);
+  const { brands } = useBrands();
+  // const [brands, setBrands] = React.useState([]);
   const [deletingBrand, setDeletingBrand] = React.useState();
 
-  const getBrands = () => {
-    getBrandsService().then((data) => {
-      setBrands(data);
-    });
-  };
+  // const getBrands = () => {
+  //   getBrandsService().then((data) => {
+  //     setBrands(data);
+  //   });
+  // };
 
-  React.useEffect(() => {
-    getBrands();
-  }, []);
+  // React.useEffect(() => {
+  //   getBrands();
+  // }, []);
 
   const onRequestClose = () => {
     setDeletingBrand(undefined);
@@ -80,7 +82,8 @@ const BrandsScreen = () => {
             brand={deletingBrand}
             onCancel={() => onRequestClose()}
             onSuccess={() => {
-              getBrands();
+              brands();
+              // getBrands();
               onRequestClose();
             }}
           />

@@ -5,10 +5,6 @@
       "id": 4
     },
     {
-      "name": "Testando test",
-      "id": 5
-    },
-    {
       "name": "Ferrari",
       "id": 6
     },
@@ -21,9 +17,35 @@
       "id": 8
     },
     {
-      "name": "Ford 01",
+      "name": "Ford",
       "id": 9
     }
   ],
-  "cars": []
+  "cars": [
+    {
+      "name": "Gol",
+      "id": 1,
+      "brands": 1,
+      "license_plate": "APZ 2090",
+      "color": "Prata"
+    },
+    {
+      "name": "Fusca",
+      "color": "Verde",
+      "license_plate": "APZ 3030",
+      "id": 2
+    },
+    {
+      "name": "Rural",
+      "color": "Marrom",
+      "license_plate": "ACS 0030",
+      "id": 5
+    },
+    {
+      "name": "Landau",
+      "color": "Branca",
+      "license_plate": "APZ 3030",
+      "id": 6
+    }
+  ]
 }

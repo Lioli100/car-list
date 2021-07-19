@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function TextInput({ id, value, onChange, placeholder, type, disabled }) {
+function Input({ id, value, onChange, placeholder, type, disabled }) {
   return (
     <div>
       <input
@@ -23,9 +23,9 @@ function TextInput({ id, value, onChange, placeholder, type, disabled }) {
   );
 }
 
-export default TextInput;
+export default Input;
 
-TextInput.propTypes = {
+Input.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -44,7 +44,7 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
 };
 
-TextInput.defaultProps = {
+Input.defaultProps = {
   id: undefined,
   placeholder: undefined,
   type: "text",

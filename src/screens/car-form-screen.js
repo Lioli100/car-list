@@ -11,6 +11,8 @@ import getCarByIdService from "../services/get-car-by-id-service";
 const CarFormScreen = () => {
   const [carId, setCarId] = React.useState();
   const [carName, setCarName] = React.useState("");
+  const [carLicensePlate, setCarLicensePlate] = React.useState("");
+  const [carColor, setCarColor] = React.useState("");
   const { notify } = useToast();
   const { goBack } = useHistory();
 
@@ -18,10 +20,15 @@ const CarFormScreen = () => {
 
   const saveCar = () => {
     const message = id
-      ? `Carro ${carName} editada com sucesso!`
-      : `Carro ${carName} adicionada com sucesso!`;
+      ? `Carro ${carName} editado com sucesso!`
+      : `Carro ${carName} adicionado com sucesso!`;
 
-    saveCarService({ id, name: carName }).then(() => {
+    saveCarService({
+      id,
+      license_plate: carLicensePlate,
+      color: carColor,
+      name: carName,
+    }).then(() => {
       notify({
         intent: "success",
         message,
@@ -36,6 +43,8 @@ const CarFormScreen = () => {
       getCarByIdService({ id }).then((data) => {
         setCarId(data.id);
         setCarName(data.name);
+        setCarLicensePlate(data.license_plate);
+        setCarColor(data.color);
       });
     }
   }, [id]);
@@ -65,6 +74,28 @@ const CarFormScreen = () => {
           id="name"
           value={carName}
           onChange={(value) => setCarName(value)}
+          required
+        />
+        <Separator />
+        <label htmlFor="license_plate">
+          <b>Placa:</b>
+        </label>
+        <Separator />
+        <Input
+          id="licence_plate"
+          value={carLicensePlate}
+          onChange={(value) => setCarLicensePlate(value)}
+          required
+        />
+        <Separator />
+        <label htmlFor="color">
+          <b>Cor:</b>
+        </label>
+        <Separator />
+        <Input
+          id="color"
+          value={carColor}
+          onChange={(value) => setCarColor(value)}
           required
         />
         <Separator />
