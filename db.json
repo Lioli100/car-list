@@ -9,23 +9,19 @@
       "id": 6
     },
     {
-      "name": "Alfa Romeu",
+      "name": "Ford",
       "id": 7
     },
     {
-      "name": "Alfarromeu ",
+      "name": "Ford vvv",
       "id": 8
-    },
-    {
-      "name": "Ford",
-      "id": 9
     }
   ],
   "cars": [
     {
       "name": "Gol",
       "id": 1,
-      "brands": 1,
+      "brandId": 1,
       "license_plate": "APZ 2090",
       "color": "Prata"
     },
@@ -37,15 +33,34 @@
     },
     {
       "name": "Rural",
-      "color": "Marrom",
+      "color": "Verde",
       "license_plate": "ACS 0030",
       "id": 5
     },
     {
-      "name": "Landau",
-      "color": "Branca",
+      "name": "Ford",
+      "color": "Marrom",
       "license_plate": "APZ 3030",
       "id": 6
+    },
+    {
+      "name": "Teste de carro",
+      "color": "Amarelo",
+      "license_plate": "APZ 3030",
+      "id": 7
+    },
+    {
+      "name": "Gol",
+      "color": "Verde",
+      "license_plate": "APZ 3030",
+      "id": 8
+    },
+    {
+      "name": "fusca 01",
+      "color": "Branca",
+      "license_plate": "APZ 3030",
+      "brandId": "4",
+      "id": 9
     }
   ]
 }

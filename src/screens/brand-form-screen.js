@@ -7,6 +7,7 @@ import { useToast } from "../components/toast";
 import { useHistory, useParams } from "react-router-dom";
 import saveBrandService from "../services/save-brand-service";
 import getBrandByIdService from "../services/get-brand-by-id-service";
+import Header from "../components/header";
 
 const BrandFormScreen = () => {
   const [brandId, setBrandId] = React.useState();
@@ -42,6 +43,8 @@ const BrandFormScreen = () => {
 
   return (
     <Container>
+      <Header />
+
       <h1>{id ? "Editar Marca" : "Nova Marca"}</h1>
       <Separator />
       <label htmlFor="id">

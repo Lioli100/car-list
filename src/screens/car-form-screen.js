@@ -7,12 +7,14 @@ import { useToast } from "../components/toast";
 import { useHistory, useParams } from "react-router-dom";
 import saveCarService from "../services/save-car-service";
 import getCarByIdService from "../services/get-car-by-id-service";
+import Header from "../components/header";
 
 const CarFormScreen = () => {
   const [carId, setCarId] = React.useState();
   const [carName, setCarName] = React.useState("");
   const [carLicensePlate, setCarLicensePlate] = React.useState("");
   const [carColor, setCarColor] = React.useState("");
+  const [carMarca, setCarMarca] = React.useState("");
   const { notify } = useToast();
   const { goBack } = useHistory();
 
@@ -28,6 +30,7 @@ const CarFormScreen = () => {
       license_plate: carLicensePlate,
       color: carColor,
       name: carName,
+      brandId: carMarca,
     }).then(() => {
       notify({
         intent: "success",
@@ -45,12 +48,14 @@ const CarFormScreen = () => {
         setCarName(data.name);
         setCarLicensePlate(data.license_plate);
         setCarColor(data.color);
+        setCarMarca(data.brandId);
       });
     }
   }, [id]);
 
   return (
     <Container>
+      <Header />
       <h1>{id ? "Editar Carro" : "Novo Carro"}</h1>
       <Separator />
       <label htmlFor="id">
@@ -74,6 +79,16 @@ const CarFormScreen = () => {
           id="name"
           value={carName}
           onChange={(value) => setCarName(value)}
+          required
+        />
+        <Separator />
+        <label htmlFor="brandId">
+          <b>Marca:</b>
+        </label>
+        <Input
+          id="brandId"
+          value={carMarca}
+          onChange={(value) => setCarMarca(value)}
           required
         />
         <Separator />

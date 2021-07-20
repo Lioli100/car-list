@@ -18,6 +18,7 @@ const Routes = () => {
         <Route exact path="/">
           <Redirect to="/marcas" />
         </Route>
+
         <Route exact path="/marcas">
           <BrandsScreen />
         </Route>

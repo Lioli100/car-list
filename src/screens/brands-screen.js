@@ -7,12 +7,15 @@ import Modal from "../components/modal";
 import { Link } from "react-router-dom";
 import DeleteConfirmationModal from "../components/delete-confirmation-modal";
 import useBrands from "../hooks/use-brands";
-// import getBrandsService from "../services/get-brands-service";
+import Header from "../components/header";
+import Text from "../components/text";
+import Input from "../components/input";
 
 const BrandsScreen = () => {
-  const { brands } = useBrands();
+  const { brands, loadBrands } = useBrands();
   // const [brands, setBrands] = React.useState([]);
   const [deletingBrand, setDeletingBrand] = React.useState();
+  const [filter, setFilter] = React.useState("");
 
   // const getBrands = () => {
   //   getBrandsService().then((data) => {
@@ -27,9 +30,13 @@ const BrandsScreen = () => {
   const onRequestClose = () => {
     setDeletingBrand(undefined);
   };
+  const filteredBrands = brands.filter((brand) =>
+    brand.name.toLowerCase().startsWith(filter)
+  );
 
   return (
     <Container>
+      <Header />
       <div
         style={{
           display: "flex",
@@ -43,8 +50,12 @@ const BrandsScreen = () => {
         </Link>
       </div>
       <Separator />
+      <Text>Filtrar por marca</Text>
+      <Input value={filter} onChange={setFilter} />
+      <Separator />
+      <Separator />
       <Table
-        data={brands}
+        data={filteredBrands}
         columns={[
           { path: "id", label: "#", width: "5%" },
           { path: "name", label: "Nome", width: "90%" },
@@ -82,7 +93,7 @@ const BrandsScreen = () => {
             brand={deletingBrand}
             onCancel={() => onRequestClose()}
             onSuccess={() => {
-              brands();
+              loadBrands();
               // getBrands();
               onRequestClose();
             }}

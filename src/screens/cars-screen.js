@@ -8,21 +8,24 @@ import { Link } from "react-router-dom";
 import DeleteConfirmationModalCar from "../components/delete-confirmation-modal-car";
 import getCarsService from "../services/get-car-service";
 import SelectBrand from "../components/select-brands";
+import Header from "../components/header";
+import useCars from "../hooks/use-cars";
 
 const CarsScreen = () => {
-  const [cars, setCars] = React.useState([]);
+  // const [cars, setCars] = React.useState([]);
+  const { cars, loadCars } = useCars();
   const [deletingCar, setDeletingCar] = React.useState();
   const [marcaSelecionada, setMarcaSelecionada] = React.useState(null);
 
-  const getCars = () => {
-    getCarsService().then((data) => {
-      setCars(data);
-    });
-  };
+  // const getCars = () => {
+  //   getCarsService().then((data) => {
+  //     setCars(data);
+  //   });
+  // };
 
-  React.useEffect(() => {
-    getCars();
-  }, []);
+  // React.useEffect(() => {
+  //   getCars();
+  // }, []);
 
   const onRequestClose = () => {
     setDeletingCar(undefined);
@@ -30,6 +33,7 @@ const CarsScreen = () => {
 
   return (
     <Container>
+      <Header />
       <div
         style={{
           display: "flex",
@@ -49,7 +53,7 @@ const CarsScreen = () => {
       Marca Selecionada: {marcaSelecionada?.name}
       <br />
       <br />
-      <SelectBrand onChange={() => null} />
+      {/* <SelectBrand onChange={() => null} /> */}
       <Separator />
       <Table
         data={cars}
@@ -58,6 +62,7 @@ const CarsScreen = () => {
           { path: "name", label: "Nome", width: "90%" },
           { path: "color", label: "Cor", width: "5%" },
           { path: "license_plate", label: "Placa", width: "5%" },
+          { path: "brandId", labe: "Marca", width: "5%" },
           {
             path: "",
             label: "Ações",
@@ -92,7 +97,8 @@ const CarsScreen = () => {
             car={deletingCar}
             onCancel={() => onRequestClose()}
             onSuccess={() => {
-              getCars();
+              loadCars();
+              // getCars();
               onRequestClose();
             }}
           />
