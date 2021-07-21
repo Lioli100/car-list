@@ -6,7 +6,7 @@ function Container({ children }) {
       style={{
         display: "flex",
         flexDirection: "column",
-        padding: "32px",
+        padding: "2px 10px 2px 10px",
       }}
     >
       {children}

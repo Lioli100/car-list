@@ -16,7 +16,7 @@ function Input({ id, value, onChange, placeholder, type, disabled }) {
           mixBlendMode: "normal",
           border: "1px solid #B7C1C5",
           boxSizing: "border-box",
-          borderRadius: "20px",
+          borderRadius: "5px",
         }}
       />
     </div>

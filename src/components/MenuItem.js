@@ -10,7 +10,8 @@ function MenuItem({ children }) {
         color: "#000",
         textAlign: "center",
         margin: 0,
-        // padding: "5px",
+        fontSize: "18px",
+        hover: "box-shadow: inset 0 0 1em gold, 0 0 1em red",
       }}
     >
       {children}

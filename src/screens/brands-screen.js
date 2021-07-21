@@ -51,13 +51,15 @@ const BrandsScreen = () => {
       </div>
       <Separator />
       <Text>Filtrar por marca</Text>
-      <Input value={filter} onChange={setFilter} />
+      {/* <Input value={filter} onChange={setFilter} /> */}
+      <Input value={filter} onChange={(value) => setFilter(value)} />
       <Separator />
       <Separator />
       <Table
         data={filteredBrands}
+        // data={brands}
         columns={[
-          { path: "id", label: "#", width: "5%" },
+          // { path: "id", label: "#", width: "5%" },
           { path: "name", label: "Nome", width: "90%" },
           {
             path: "",
@@ -94,7 +96,7 @@ const BrandsScreen = () => {
             onCancel={() => onRequestClose()}
             onSuccess={() => {
               loadBrands();
-              // getBrands();
+              //getBrands();
               onRequestClose();
             }}
           />

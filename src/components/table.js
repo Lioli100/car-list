@@ -6,7 +6,7 @@ function Table({ data, columns, rowkey }) {
     <table border={1} style={{ border: 1 }}>
       <tr>
         {columns.map((column) => (
-          <th key={column.path} style={{ padding: 2 }}>
+          <th key={column.path} style={{ padding: 2, width: column.width }}>
             {column.label}
           </th>
         ))}

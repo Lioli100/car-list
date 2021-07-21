@@ -8,47 +8,63 @@ import { useHistory, useParams } from "react-router-dom";
 import saveCarService from "../services/save-car-service";
 import getCarByIdService from "../services/get-car-by-id-service";
 import Header from "../components/header";
+import useForm from "../hooks/use-form";
 
 const CarFormScreen = () => {
-  const [carId, setCarId] = React.useState();
-  const [carName, setCarName] = React.useState("");
-  const [carLicensePlate, setCarLicensePlate] = React.useState("");
-  const [carColor, setCarColor] = React.useState("");
-  const [carMarca, setCarMarca] = React.useState("");
+  // const [carId, setCarId] = React.useState();
+  // const [carName, setCarName] = React.useState("");
+  // const [carLicensePlate, setCarLicensePlate] = React.useState("");
+  // const [carColor, setCarColor] = React.useState("");
+  // const [carMarca, setCarMarca] = React.useState("");
   const { notify } = useToast();
   const { goBack } = useHistory();
 
   const { id } = useParams();
 
-  const saveCar = () => {
-    const message = id
-      ? `Carro ${carName} editado com sucesso!`
-      : `Carro ${carName} adicionado com sucesso!`;
+  // const saveCar = () => {
+  //   const message = id
+  //     ? `Carro ${carName} editado com sucesso!`
+  //     : `Carro ${carName} adicionado com sucesso!`;
 
-    saveCarService({
-      id,
-      license_plate: carLicensePlate,
-      color: carColor,
-      name: carName,
-      brandId: carMarca,
-    }).then(() => {
-      notify({
-        intent: "success",
-        message,
+  const { getValue, setValue, submit } = useForm({
+    initialValues: {},
+    onSubmit: ({ car }) => {
+      const { id, name, color, brandId, license_plate } = car;
+      const message = id
+        ? `Carro ${name} editado com sucesso!`
+        : `Carro ${name} adicionado com sucesso!`;
+
+      // saveCarService({
+      //   id,
+      //   license_plate: carLicensePlate,
+      //   color: carColor,
+      //   name: carName,
+      //   brandId: carMarca,
+      // }).then(() => {
+      //   notify({
+      //     intent: "success",
+      //     message,
+      saveCarService({ id, name, color, brandId, license_plate }).then(() => {
+        notify({
+          intent: "success",
+          message,
+        });
+
+        // setCarName("");
+        goBack();
       });
-      setCarName("");
-      goBack();
-    });
-  };
+    },
+  });
 
   React.useEffect(() => {
     if (id) {
       getCarByIdService({ id }).then((data) => {
-        setCarId(data.id);
-        setCarName(data.name);
-        setCarLicensePlate(data.license_plate);
-        setCarColor(data.color);
-        setCarMarca(data.brandId);
+        // setCarId(data.id);
+        // setCarName(data.name);
+        // setCarLicensePlate(data.license_plate);
+        // setCarColor(data.color);
+        // setCarMarca(data.brandId);
+        setValue("car", data);
       });
     }
   }, [id]);
@@ -66,10 +82,12 @@ const CarFormScreen = () => {
         style={{ maxWidth: 500 }}
         onSubmit={(event) => {
           event.preventDefault();
-          saveCar();
+          // saveCar();
+          submit();
         }}
       >
-        <Input id="id" disabled value={carId} />
+        {/* <Input id="id" disabled value={carId} /> */}
+        <Input id="id" disabled value={getValue("car.id")} />
         <Separator />
         <label htmlFor="name">
           <b>Nome:</b>
@@ -77,8 +95,10 @@ const CarFormScreen = () => {
         <Separator />
         <Input
           id="name"
-          value={carName}
-          onChange={(value) => setCarName(value)}
+          // value={carName}
+          // onChange={(value) => setCarName(value)}
+          value={getValue("car.name")}
+          onChange={(value) => setValue("car.name", value)}
           required
         />
         <Separator />
@@ -87,8 +107,10 @@ const CarFormScreen = () => {
         </label>
         <Input
           id="brandId"
-          value={carMarca}
-          onChange={(value) => setCarMarca(value)}
+          // value={carMarca}
+          // onChange={(value) => setCarMarca(value)}
+          value={getValue("car.marca")}
+          onChange={(value) => setValue("car.marca", value)}
           required
         />
         <Separator />
@@ -97,9 +119,11 @@ const CarFormScreen = () => {
         </label>
         <Separator />
         <Input
-          id="licence_plate"
-          value={carLicensePlate}
-          onChange={(value) => setCarLicensePlate(value)}
+          id="license_plate"
+          value={getValue("car.license_plate")}
+          onChange={(value) => setValue("car.license_plate", value)}
+          // value={carLicensePlate}
+          // onChange={(value) => setCarLicensePlate(value)}
           required
         />
         <Separator />
@@ -109,8 +133,10 @@ const CarFormScreen = () => {
         <Separator />
         <Input
           id="color"
-          value={carColor}
-          onChange={(value) => setCarColor(value)}
+          // value={carColor}
+          // onChange={(value) => setCarColor(value)}
+          value={getValue("car.color")}
+          onChange={(value) => setValue("car.color", value)}
           required
         />
         <Separator />
