@@ -109,8 +109,8 @@ const CarFormScreen = () => {
           id="brandId"
           // value={carMarca}
           // onChange={(value) => setCarMarca(value)}
-          value={getValue("car.marca")}
-          onChange={(value) => setValue("car.marca", value)}
+          value={getValue("car.brandId")}
+          onChange={(value) => setValue("car.brandId", value)}
           required
         />
         <Separator />

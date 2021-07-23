@@ -22,6 +22,10 @@ const BrandFormScreen = () => {
     initialValues: {},
     onSubmit: ({ brand }) => {
       const { id, name } = brand;
+      if (!name) {
+        setNameError("Campo nome é obrigatório!");
+        return;
+      }
       const message = id
         ? `Marca ${name} editada com sucesso!`
         : `Marca ${name} adicionada com sucesso!`;
