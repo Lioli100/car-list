@@ -8,7 +8,6 @@ function TextArea({ value, onChange, placeholder }) {
         color: "#4D656F",
         fontFamily: "inter",
         fontStyle: "normal",
-        // lineHeight: "17px",
       }}
     ></textarea>
   );

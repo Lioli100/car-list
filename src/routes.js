@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
   Redirect,
-  Link,
 } from "react-router-dom";
 import BrandsScreen from "./screens/brands-screen";
 import CarsScreen from "./screens/cars-screen";

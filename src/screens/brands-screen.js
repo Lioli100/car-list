@@ -13,19 +13,8 @@ import Input from "../components/input";
 
 const BrandsScreen = () => {
   const { brands, loadBrands } = useBrands();
-  // const [brands, setBrands] = React.useState([]);
   const [deletingBrand, setDeletingBrand] = React.useState();
   const [filter, setFilter] = React.useState("");
-
-  // const getBrands = () => {
-  //   getBrandsService().then((data) => {
-  //     setBrands(data);
-  //   });
-  // };
-
-  // React.useEffect(() => {
-  //   getBrands();
-  // }, []);
 
   const onRequestClose = () => {
     setDeletingBrand(undefined);
@@ -51,15 +40,12 @@ const BrandsScreen = () => {
       </div>
       <Separator />
       <Text>Filtrar por marca</Text>
-      {/* <Input value={filter} onChange={setFilter} /> */}
       <Input value={filter} onChange={(value) => setFilter(value)} />
       <Separator />
       <Separator />
       <Table
         data={filteredBrands}
-        // data={brands}
         columns={[
-          // { path: "id", label: "#", width: "5%" },
           { path: "name", label: "Nome", width: "90%" },
           {
             path: "",
@@ -96,7 +82,6 @@ const BrandsScreen = () => {
             onCancel={() => onRequestClose()}
             onSuccess={() => {
               loadBrands();
-              //getBrands();
               onRequestClose();
             }}
           />

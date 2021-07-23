@@ -1,8 +1,7 @@
-import React from "react";
-
 function Select({ value, onChange, options }) {
   return (
     <select onChange={(event) => onChange?.(event.target.value)}>
+      <option selected={!Boolean(value)}></option>
       {options.map((option) => (
         <option
           key={option.value}

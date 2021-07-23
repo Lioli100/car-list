@@ -10,7 +10,8 @@ function SelectBrand({ value, onChange }) {
     <Select
       value={value}
       onChange={(brandId) => {
-        onChange(brands.find((brand) => brand.id == brandId));
+        const selectBrand = brands.find((brand) => brand.id == brandId);
+        onChange(selectBrand);
       }}
       options={brands.map((brand) => ({
         value: brand.id,

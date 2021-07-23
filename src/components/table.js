@@ -6,7 +6,7 @@ function Table({ data, columns, rowkey }) {
     <table border={1} style={{ border: 1 }}>
       <tr>
         {columns.map((column) => (
-          <th key={column.path} style={{ padding: 2, width: column.width }}>
+          <th key={column.path} style={{ padding: 10, width: column.width }}>
             {column.label}
           </th>
         ))}
@@ -16,11 +16,11 @@ function Table({ data, columns, rowkey }) {
           <tr key={rowData[rowkey]}>
             {columns.map((column) =>
               column.render ? (
-                <td style={{ padding: 2 }}>
+                <td style={{ padding: 10 }}>
                   {column.render({ rowData, index })}
                 </td>
               ) : (
-                <td key={column.path} style={{ padding: 2 }}>
+                <td key={column.path} style={{ padding: 10 }}>
                   {rowData[column.path]}
                 </td>
               )
@@ -36,8 +36,6 @@ function Table({ data, columns, rowkey }) {
   );
 }
 
-export default Table;
-
 Table.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
   columns: PropTypes.arrayOf(
@@ -45,7 +43,10 @@ Table.propTypes = {
       path: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       render: PropTypes.func,
+      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
   rowkey: PropTypes.string,
 };
+
+export default Table;

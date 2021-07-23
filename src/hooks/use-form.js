@@ -22,7 +22,6 @@ function useForm({
   React.useEffect(() => {
     initialValuesRef.current = initialValues;
     validationsRef.current = validations;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {

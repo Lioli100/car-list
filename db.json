@@ -2,23 +2,27 @@
   "brands": [
     {
       "name": "Ferrari  ",
-      "id": 6
+      "id": 1
     },
     {
       "name": "Ford",
-      "id": 7
+      "id": 2
     },
     {
-      "name": "Ford ",
-      "id": 8
+      "name": "Kia",
+      "id": 3
     },
     {
       "name": "Teste com useForm",
-      "id": 9
+      "id": 4
     },
     {
-      "name": "Volksvagen ",
-      "id": 10
+      "name": "Volkswagen ",
+      "id": 5
+    },
+    {
+      "name": "Chevrolet ",
+      "id": 6
     }
   ],
   "cars": [
@@ -26,26 +30,29 @@
       "name": "Rural",
       "color": "Amarelo",
       "license_plate": "ACS 0030",
-      "id": 5,
-      "barndId": 8
+      "brandId": 2,
+      "id": 5
     },
     {
-      "name": "Ford",
-      "color": "Marrom",
+      "name": "Variant",
+      "color": "Marron",
       "license_plate": "APZ 3030",
-      "id": 6
+      "id": 6,
+      "brandId": 2
     },
     {
       "name": "Gol",
       "color": "Verde",
       "license_plate": "APZ 3030",
-      "id": 8
+      "id": 8,
+      "brandId": 2
     },
     {
       "name": "Sportage",
       "color": "Branca",
       "license_plate": "APZ 2090",
-      "id": 9
+      "id": 9,
+      "brandId": 3
     }
   ]
 }

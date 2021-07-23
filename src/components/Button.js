@@ -105,7 +105,6 @@ export default function Button({
       fontSize={fontSize}
     >
       {pending ? "loading" : children}
-      {/* <img src={getImg(img)} alt=""></img> */}
     </button>
   );
 }

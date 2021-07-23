@@ -4,7 +4,6 @@ function MenuItem({ children }) {
   return (
     <h5
       style={{
-        // background: "#5d6275",
         width: "50px",
         height: "15px",
         color: "#000",
