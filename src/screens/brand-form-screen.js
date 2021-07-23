@@ -19,7 +19,13 @@ const BrandFormScreen = () => {
   const { id } = useParams();
 
   const { getValue, setValue, submit } = useForm({
-    initialValues: {},
+    initialValues: {
+      brand: {
+        name: "",
+        id: "",
+      },
+    },
+
     onSubmit: ({ brand }) => {
       const { id, name } = brand;
       if (!name) {

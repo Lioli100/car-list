@@ -22,11 +22,13 @@ const CarsScreen = () => {
     setDeletingCar(undefined);
   };
 
-  const filteredCars = cars.filter(
-    (car) =>
-      car.name.toLowerCase().startsWith(filter) ||
-      car.brandId == marcaSelecionada?.id
-  );
+  const filteredCars = cars.filter((car) => {
+    const isCarNameStartingWithCurrentFilter = car.name
+      .toLowerCase()
+      .startsWith(filter);
+    const isCarBrandMatchingBrandFilter = car.brandId == marcaSelecionada?.id;
+    return isCarNameStartingWithCurrentFilter && isCarBrandMatchingBrandFilter;
+  });
 
   return (
     <Container>
